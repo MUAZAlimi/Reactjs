@@ -1,0 +1,21 @@
+{
+    "items": [
+        {
+            "id": 1,
+            "checked": false,
+            "item": "Water"
+        },
+        {
+            "id": 2,
+            "checked": false,
+            "item": "chinchin"
+        },
+        {
+            "id": 3,
+            "checked": false,
+            "item": "car"
+        }
+        
+    ]
+       
+}
