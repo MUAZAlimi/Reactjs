@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Routes, Route, useNegative } from "react-router-dom";
+import { Routes, Route, useNavigate } from "react-router-dom";
 import Home from "./Home";
 import NewPost from "./NewPost";
 import PostPage from "./PostPage";
@@ -38,13 +38,20 @@ const App = () => {
   ]);
   const [searchResult, setSearchResult] = useState([]);
 
-  const handleDelete = () => {};
+    const navigate = useNavigate();
+
+  const handleDelete = (id) => {
+    const postList = posts.filter(post => post.id !== id)
+    setPosts(postList);
+    navigate('/')
+  };
 
   return (
     <Routes>
       <Route path="/" element={<HomeLayout />}>
         <Route index element={<Home posts={posts} />} />
-        <Route path="/post" element={<NewPost />}>
+        <Route path="/post">
+          <Route index element={<NewPost />} />
           <Route
             path=":id"
             element={<PostPage posts={posts} handleDelete={handleDelete} />}
