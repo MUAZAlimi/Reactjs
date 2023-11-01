@@ -42,8 +42,7 @@ const App = () => {
   const [postBody, setPostBody] = useState("");
 
   useEffect(() => {
-    const filterResult = posts.filter(
-      (post) =>
+    const filterResult = posts.filter(post =>
         post.body.toLowerCase().includes(search.toLowerCase())
         ||
         post.title.toLowerCase().includes(search.toLowerCase()))
@@ -53,7 +52,7 @@ const App = () => {
   const navigate = useNavigate();
 
   const handleDelete = (id) => {
-    const postList = posts.filter((post) => post.id !== id);
+    const postList = posts.filter(post => post.id !== id);
     setPosts(postList);
     navigate("/");
   };
