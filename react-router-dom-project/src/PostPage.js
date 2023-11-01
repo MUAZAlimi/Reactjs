@@ -1,13 +1,19 @@
 import { Link } from "react-router-dom";
 import { useParams } from "react-router-dom";
 
-const PostPage = () => {
-  const { id } = useParams()
-  return (
-    <div>
-      PostPage
-    </div>
-  )
-}
+const PostPage = ({ posts, handleDelete }) => {
+  const { id } = useParams();
+  const post = posts.find(post => post.id.toString() === id);
 
-export default PostPage
+  return( 
+    <main className="PostPage">
+      <article className="post">
+          {post && <>
+            
+          </>}
+      </article>
+    </main>
+  )
+};
+
+export default PostPage;
