@@ -1,11 +1,15 @@
 import React from 'react'
 
-const Hearder = () => {
+const Hearder = ({title}) => {
   return (
-    <div>
-      Header
-    </div>
+    <header className='Header'>
+
+    <h1>{title}</h1>
+
+    </header>
   )
 }
+
+
 
 export default Hearder
