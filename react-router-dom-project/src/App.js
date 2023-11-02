@@ -20,15 +20,14 @@ const App = () => {
   const [editTitle, setEditTitle] = useState("");
   const [editBody, setEditBody] = useState("");
 
-
   const navigate = useNavigate();
 
   const handleDelete = async (id) => {
     try {
-          await Api.delete(`/post/${id}`);
+      await Api.delete(`/post/${id}`);
       const postLists = posts.filter((post) => post.id !== id);
-    setPosts(postLists);
-    navigate("/");
+      setPosts(postLists);
+      navigate("/");
     } catch (error) {
       console.log(`Error: ${error.message}`);
     }
@@ -81,20 +80,21 @@ const App = () => {
     }
   };
 
-    const handleEdit = async (id) => {
-      const date = format(new Date(), "MMMM dd, yyyy pp");
-      const updatedPost = { id, title: editTitle, date, body: editBody };
-      try {
-        const response = await Api.put(`/post/${id}`, updatedPost)
-        setPosts(posts.map(post => post.id === id ? {...response.data} : post));
-        setEditTitle('')
-        setEditBody('')
-        navigate('/')
-      } catch (error) {
-        console.log(`Error: ${error.message}`);
-      }
+  const handleEdit = async (id) => {
+    const date = format(new Date(), "MMMM dd, yyyy pp");
+    const updatedPost = { id, title: editTitle, date, body: editBody };
+    try {
+      const response = await Api.put(`/post/${id}`, updatedPost);
+      setPosts(
+        posts.map((post) => (post.id === id ? { ...response.data } : post))
+      );
+      setEditTitle("");
+      setEditBody("");
+      navigate("/");
+    } catch (error) {
+      console.log(`Error: ${error.message}`);
     }
-
+  };
 
   return (
     <Routes>
