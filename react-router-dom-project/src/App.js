@@ -17,6 +17,8 @@ const App = () => {
   const [searchResult, setSearchResult] = useState([]);
   const [postTitle, setPostTitle] = useState("");
   const [postBody, setPostBody] = useState("");
+  const [editTitle, setEditTitle] = useState("");
+  const [editBody, setEditBody] = useState("");
 
 
   const navigate = useNavigate();
@@ -35,22 +37,6 @@ const App = () => {
     navigate("/");
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    const id = posts.length ? posts[posts.length - 1].id + 1 : 1;
-    const date = format(new Date(), "MMMM dd, yyyy pp");
-    const newPost = { id, title: postTitle, date, body: postBody };
-    try {
-      const response = await Api.post("/posts", newPost);
-      const allPost = [...posts, response.data];
-      setPosts(allPost);
-      setPostTitle("");
-      setPostBody("");
-      navigate("/");
-    } catch (error) {
-      console.log(`Error: ${error.message}`);
-    }
-  };
   useEffect(() => {
     const filterResult = posts.filter(
       (post) =>
@@ -78,6 +64,36 @@ const App = () => {
     };
     fetchPost();
   }, []);
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const id = posts.length ? posts[posts.length - 1].id + 1 : 1;
+    const date = format(new Date(), "MMMM dd, yyyy pp");
+    const newPost = { id, title: postTitle, date, body: postBody };
+    try {
+      const response = await Api.post("/posts", newPost);
+      const allPost = [...posts, response.data];
+      setPosts(allPost);
+      setPostTitle("");
+      setPostBody("");
+      navigate("/");
+    } catch (error) {
+      console.log(`Error: ${error.message}`);
+    }
+  };
+
+    const handleEdit = async (id) => {
+      const date = format(new Date(), "MMMM dd, yyyy pp");
+      const updatedPost = { id, title: editTitle, date, body: editBody };
+      try {
+        const response = await Api.put(`/post/${id}`, updatedPost)
+        setPosts(posts.map(post => post.id === id ? {...response.data} : post));
+        setEditTitle('')
+        setEditBody('')
+        navigate('/')
+      } catch (error) {
+        console.log(`Error: ${error.message}`);
+      }
+    }
 
 
   return (
