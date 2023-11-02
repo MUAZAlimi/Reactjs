@@ -8,45 +8,84 @@ import PostPage from "./PostPage";
 import Missing from "./Missing";
 import About from "./About";
 import HomeLayout from "./HomeLayout";
+import Api from "./Api/Posts";
 
 const App = () => {
-  const navigate = useNavigate();
-
-  const handleDelete = (id) => {
-    const postLists = posts.filter((post) => post.id !== id);
-    setPosts(postLists);
-    navigate("/");
-  };
-
   const [posts, setPosts] = useState([]);
+
   const [search, setSearch] = useState("");
   const [searchResult, setSearchResult] = useState([]);
   const [postTitle, setPostTitle] = useState("");
   const [postBody, setPostBody] = useState("");
 
-  const handleSubmit = (e) => {
+
+  const navigate = useNavigate();
+
+  const handleDelete = async (id) => {
+    try {
+          await Api.delete(`/post/${id}`);
+      const postLists = posts.filter((post) => post.id !== id);
+    setPosts(postLists);
+    navigate("/");
+    } catch (error) {
+      console.log(`Error: ${error.message}`);
+    }
+    const postLists = posts.filter((post) => post.id !== id);
+    setPosts(postLists);
+    navigate("/");
+  };
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const id = posts.length ? posts[posts.length - 1].id + 1 : 1;
     const date = format(new Date(), "MMMM dd, yyyy pp");
     const newPost = { id, title: postTitle, date, body: postBody };
-    const allPost = [...posts, newPost]
-    setPosts(allPost);
-    setPostTitle('');
-    setPostBody('')
-    navigate('/')
+    try {
+      const response = await Api.post("/posts", newPost);
+      const allPost = [...posts, response.data];
+      setPosts(allPost);
+      setPostTitle("");
+      setPostBody("");
+      navigate("/");
+    } catch (error) {
+      console.log(`Error: ${error.message}`);
+    }
   };
-
   useEffect(() => {
-    const filterResult = posts.filter(post => post.body.toLowerCase().includes(search.toLowerCase()) 
-    || 
-    post.title.toLowerCase().includes(search.toLowerCase()))
+    const filterResult = posts.filter(
+      (post) =>
+        post.body.toLowerCase().includes(search.toLowerCase()) ||
+        post.title.toLowerCase().includes(search.toLowerCase())
+    );
 
     setSearchResult(filterResult.reverse());
-  }, [posts, search])
+  }, [posts, search]);
+
+  useEffect(() => {
+    const fetchPost = async () => {
+      try {
+        const response = await Api.get("/posts");
+        setPosts(response.data);
+      } catch (error) {
+        if (error.message) {
+          console.log(error.response.data);
+          console.log(error.response.status);
+          console.log(error.response.headers);
+        } else {
+          console.log(`Error: ${error.message}`);
+        }
+      }
+    };
+    fetchPost();
+  }, []);
+
 
   return (
     <Routes>
-      <Route path="" element={<HomeLayout search={search} setSearch={setSearch} />}>
+      <Route
+        path=""
+        element={<HomeLayout search={search} setSearch={setSearch} />}
+      >
         <Route index element={<Home posts={searchResult} />} />
         <Route path="/post">
           <Route
@@ -57,7 +96,7 @@ const App = () => {
                 setPostTitle={setPostTitle}
                 postBody={postBody}
                 setPostBody={setPostBody}
-                handleSumit={handleSubmit}
+                handleSubmit={handleSubmit}
               />
             }
           />
