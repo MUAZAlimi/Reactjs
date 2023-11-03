@@ -7,7 +7,7 @@ const HomeLayout = ({search, setSearch, width}) => {
   return (
     <div className="App">
       <Header title="DLT Student Blog" width = {width}/>
-      <Nav search={search} setSearcht={setSearch}/>
+      <Nav search={search} setSearch={setSearch}/>
       <Outlet />
       <Footer />
     </div>
