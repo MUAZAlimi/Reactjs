@@ -13,6 +13,8 @@ const useWindowSize = () => {
         })
       }
       handleResize()
+
+      window.addEventListener()
     }, [])
     
 }
