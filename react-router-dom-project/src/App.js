@@ -10,6 +10,7 @@ import HomeLayout from "./HomeLayout";
 import Api from "./Api/Posts";
 import EditPost from "./EditPost";
 import useWindowSize from "./hooks/useWindowSize";
+import useAxiosFetch from "./hooks/useAxiosFetch";
 
 const App = () => {
   const navigate = useNavigate();
@@ -32,8 +33,13 @@ const App = () => {
   const [postBody, setPostBody] = useState("");
   const [editTitle, setEditTitle] = useState("");
   const [editBody, setEditBody] = useState("");
+  const { width } = useWindowSize();
 
-  const { width } = useWindowSize()
+  const {data, fetchError, isLoading} = useAxiosFetch('http://localhost:3000/posts')
+  useEffect(() => {
+    setPosts(data)
+  }, [data])
+  
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -100,9 +106,15 @@ const App = () => {
     <Routes>
       <Route
         path=""
-        element={<HomeLayout search={search} width={width} setSearch={setSearch} />}
+        element={
+          <HomeLayout search={search} width={width} setSearch={setSearch} />
+        }
       >
-        <Route index element={<Home posts={searchResult} />} />
+        <Route index element={<Home 
+        posts={searchResult}
+        fetchError={fetchError} 
+        isLoading={isLoading} />
+      } />
         <Route path="/post">
           <Route
             index
