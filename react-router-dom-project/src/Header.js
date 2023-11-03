@@ -1,4 +1,4 @@
-
+import { FaLaptop, FaTabletAlt, FaMobileAlt} from "react-icons/fa"
 
 const Hearder = ({title}) => {
   return (
