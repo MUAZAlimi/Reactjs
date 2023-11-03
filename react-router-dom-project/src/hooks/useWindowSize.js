@@ -6,7 +6,9 @@ const useWindowSize = () => {
         height: undefined
     })      
     useEffect(() => {
-      
+      const handleResize = () => {
+        setWindowSize({})
+      }
     }, [])
     
 }
