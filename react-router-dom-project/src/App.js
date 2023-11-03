@@ -35,7 +35,7 @@ const App = () => {
   const [editBody, setEditBody] = useState("");
   const { width } = useWindowSize();
 
-  const {data, fetchError, isLoading} = useAxiosFetch('http://localhost:3000/posts')
+  const {data, fetchError, isLoading} = useAxiosFetch('http://localhost:3000/post')
   useEffect(() => {
     setPosts(data)
   }, [data])
