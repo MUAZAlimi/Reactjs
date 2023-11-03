@@ -1,6 +1,6 @@
 import { FaLaptop, FaTabletAlt, FaMobileAlt} from "react-icons/fa"
 
-const Hearder = ({title}) => {
+const Hearder = ({ title, width }) => {
   return (
     <header className='Header'>
 
