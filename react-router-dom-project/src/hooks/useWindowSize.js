@@ -5,6 +5,10 @@ const useWindowSize = () => {
         width: undefined,
         height: undefined
     })      
+    useEffect(() => {
+      
+    }, [])
+    
 }
 
 export default useWindowSize
