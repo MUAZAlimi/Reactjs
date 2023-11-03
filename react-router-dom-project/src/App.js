@@ -9,7 +9,7 @@ import About from "./About";
 import HomeLayout from "./HomeLayout";
 import Api from "./Api/Posts";
 import EditPost from "./EditPost";
-// import useWidowSize from "./hooks/useWindowSize"
+import useWindowSize from "./hooks/useWindowSize";
 
 const App = () => {
   const navigate = useNavigate();
@@ -32,6 +32,8 @@ const App = () => {
   const [postBody, setPostBody] = useState("");
   const [editTitle, setEditTitle] = useState("");
   const [editBody, setEditBody] = useState("");
+
+  const { width } = useWindowSize()
 
   const handleSubmit = async (e) => {
     e.preventDefault();
