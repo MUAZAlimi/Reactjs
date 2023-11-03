@@ -25,7 +25,7 @@ const useAxiosFetch = (dataUrl) => {
                 setData([])
             }
         }finally{
-            isMounted && setImmediate(false)
+            isMounted && setIsLoading(false)
         }
     };
     fetchData(dataUrl)
