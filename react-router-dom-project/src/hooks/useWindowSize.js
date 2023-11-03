@@ -12,6 +12,7 @@ const useWindowSize = () => {
             height: window.innerHeight
         })
       }
+      handleResize()
     }, [])
     
 }
