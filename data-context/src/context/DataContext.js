@@ -8,7 +8,7 @@ export const DataProvider = ({children}) => {
 
         }}>
             {children}
-        </DataContext.Provider>   
+        </DataContext.Provider> 
     )
 }
 
