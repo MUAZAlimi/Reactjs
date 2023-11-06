@@ -3,7 +3,7 @@ import Header from "./Header";
 import Nav from "./Nav";
 import Footer from "./Footer";
 
-const HomeLayout = ({search, setSearch, width}) => {
+const HomeLayout = ({search, setSearch }) => {
   return (
     <div className="App">
       <Header title="DLT Student Blog"/>
