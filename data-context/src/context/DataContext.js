@@ -6,7 +6,7 @@ import useAxiosFetch from "../hooks/useAxiosFetch";
 import Api from "../Api/Posts";
 
 const DataContext = createContext({}) 
-    
+
 export const DataProvider = ({children}) => {
 
     const [posts, setPosts] = useState([]);
