@@ -4,6 +4,7 @@ import useAxiosFetch from "./hooks/useAxiosFetch";
 import { Routes, Route, useNavigate } from "react-router-dom";
 import { format } from "date-fns";
 import { useState, useEffect } from "react";
+import Api from "./Api/Posts";
 
 const DataContext = createContext({}) 
 
