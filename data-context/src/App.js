@@ -110,7 +110,7 @@ const App = () => {
           />
           <Route
             path=":id"
-            element={<PostPage posts={posts} handleDelete={handleDelete} />}
+            element={<PostPage/>}
           />
         </Route>
 
