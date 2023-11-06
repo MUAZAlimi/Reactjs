@@ -40,6 +40,18 @@ const App = () => {
     setPosts(data)
   }, [data])
 
+  
+
+  useEffect(() => {
+    const filterResult = posts.filter(
+      (post) =>
+        post.body.toLowerCase().includes(search.toLowerCase()) ||
+        post.title.toLowerCase().includes(search.toLowerCase())
+    );
+
+    setSearchResult(filterResult.reverse());
+  }, [posts, search]);
+  
   const handleSubmit = async (e) => {
     e.preventDefault();
     const id = posts.length ? posts[posts.length - 1].id + 1 : 1;
@@ -56,17 +68,6 @@ const App = () => {
       console.log(`Error: ${err.message}`);
     }
   };
-
-  useEffect(() => {
-    const filterResult = posts.filter(
-      (post) =>
-        post.body.toLowerCase().includes(search.toLowerCase()) ||
-        post.title.toLowerCase().includes(search.toLowerCase())
-    );
-
-    setSearchResult(filterResult.reverse());
-  }, [posts, search]);
-
   // useEffect(() => {
   //   const fetchPost = async () => {
   //     try {
