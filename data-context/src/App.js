@@ -117,14 +117,7 @@ const App = () => {
         <Route
           path="/edit/:id"
           element={
-            <EditPost
-              posts={posts}
-              handleEdit={handleEdit}
-              editTitle={editTitle}
-              setEditTitle={setEditTitle}
-              editBody={editBody}
-              setEditBody={setEditBody}
-            />
+            <EditPost/>
           }
         />
 
