@@ -39,7 +39,6 @@ const App = () => {
   useEffect(() => {
     setPosts(data)
   }, [data])
-  
 
   const handleSubmit = async (e) => {
     e.preventDefault();
