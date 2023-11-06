@@ -12,8 +12,6 @@ export const DataProvider = ({children}) => {
     const [posts, setPosts] = useState([]);
     const [search, setSearch] = useState("");
     const [searchResult, setSearchResult] = useState([]);
-    const [postTitle, setPostTitle] = useState("");
-    const [postBody, setPostBody] = useState("");
     const [editTitle, setEditTitle] = useState("");
     const [editBody, setEditBody] = useState("");
     const { width } = useWindowSize();
@@ -47,24 +45,6 @@ export const DataProvider = ({children}) => {
         }
       };
     
-      const handleSubmit = async (e) => {
-        e.preventDefault();
-        const id = posts.length ? posts[posts.length - 1].id + 1 : 1;
-        const date = format(new Date(), "MMMM dd, yyyy pp");
-        const newPost = { id, title: postTitle, date, body: postBody };
-        try {
-          const response = await Api.post("/posts", newPost);
-          const allPost = [...posts, response.data];
-          setPosts(allPost);
-          setPostTitle("");
-          setPostBody("");
-          navigate("/");
-        } catch (err) {
-          console.log(`Error: ${err.message}`);
-        }
-      };
-      
-    
       const handleEdit = async (id) => {
         const date = format(new Date(), "MMMM dd, yyyy pp");
         const updatedPost = { id, title: editTitle, date, body: editBody };
@@ -83,8 +63,7 @@ export const DataProvider = ({children}) => {
     return (
         <DataContext.Provider value={{
             width,search,setSearch, // header and nav
-            posts, fetchError, isLoading, searchResult, // home
-            postTitle, setPostTitle, postBody, setPostBody, handleSubmit, // newpost
+            posts, fetchError, isLoading, searchResult, setPosts, // home
             handleDelete,  //postPage
             setEditBody, editBody, setEditTitle, editTitle, handleEdit, //editPost
         }}>
