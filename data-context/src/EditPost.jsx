@@ -12,7 +12,7 @@ const EditPost = () => {
 
     const { posts, setPosts } = useContext(DataContext)
     const { id } = useParams();
-    const post = posts.find(post => (post.id).toString() === id)
+    const post = posts.find( post => (post.id).toString() === id)
 
     const handleEdit = async (id) => {
         const date = format(new Date(), "MMMM dd, yyyy pp");
@@ -20,7 +20,7 @@ const EditPost = () => {
         try {
           const response = await Api.put(`/posts/${id}`, updatedPost);
           setPosts(
-            posts.map((post) => (post.id === id ? { ...response.data } : post))
+            posts.map( post => (post.id === id ? { ...response.data } : post))
           );
           setEditTitle("");
           setEditBody("");
