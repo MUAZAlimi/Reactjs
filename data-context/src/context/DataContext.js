@@ -1,11 +1,12 @@
 import { createContext, useEffect, useState } from 'react'
 
-const DataContext = () => {
-  return (
-    <div>
+const DataContext = createContext({}) 
+// => {
+//   return (
+//     <div>
       
-    </div>
-  )
-}
+//     </div>
+//   )
+// }
 
 export default DataContext
