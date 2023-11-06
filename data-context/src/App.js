@@ -90,7 +90,7 @@ const App = () => {
       <Route
         path=""
         element={
-          <HomeLayout search={search} width={width} setSearch={setSearch} />
+          <HomeLayout search={search} setSearch={setSearch} />
         }
       >
         <Route index element={<Home 

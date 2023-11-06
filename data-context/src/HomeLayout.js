@@ -6,7 +6,7 @@ import Footer from "./Footer";
 const HomeLayout = ({search, setSearch, width}) => {
   return (
     <div className="App">
-      <Header title="DLT Student Blog" width = {width}/>
+      <Header title="DLT Student Blog"/>
       <Nav search={search} setSearch={setSearch}/>
       <Outlet />
       <Footer />
