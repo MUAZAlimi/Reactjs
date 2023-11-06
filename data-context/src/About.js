@@ -13,7 +13,7 @@ const About = () => {
 
         React Router is a popular library within the React ecosystem, dedicated to handling navigation and routing in React applications. Unlike traditional multi-page websites, SPAs need to manage different "pages" without triggering full-page reloads. React Router achieves this by synchronizing components with the application's URL. When the URL changes, React Router ensures the appropriate components are rendered, enabling a seamless transition between different sections of the application.
 
-        Key Concepts:<br/>
+        Key Concepts:
 
         1. Route Definition:
           React Router allows developers to define routes declaratively. By specifying which component to render for a given URL, React Router ensures the correct component is displayed based on the current route.
