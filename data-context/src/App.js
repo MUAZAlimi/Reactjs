@@ -11,6 +11,7 @@ import Api from "./Api/Posts";
 import EditPost from "./EditPost";
 import useWindowSize from "./hooks/useWindowSize";
 import useAxiosFetch from "./hooks/useAxiosFetch";
+import { DataProvider } from "./context/DataContext"; 
 
 const App = () => {
   const navigate = useNavigate();
@@ -34,7 +35,6 @@ const App = () => {
   const [editTitle, setEditTitle] = useState("");
   const [editBody, setEditBody] = useState("");
   const { width } = useWindowSize();
-
   const {data, fetchError, isLoading} = useAxiosFetch('http://localhost:3500/posts')
   useEffect(() => {
     setPosts(data)
@@ -102,7 +102,8 @@ const App = () => {
   };
 
   return (
-    <Routes>
+    <DataProvider>
+      <Routes>
       <Route
         path=""
         element={
@@ -151,6 +152,7 @@ const App = () => {
         <Route path="*" element={<Missing />} />
       </Route>
     </Routes>
+    </DataProvider>
   );
 };
 
