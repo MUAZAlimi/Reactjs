@@ -9,8 +9,8 @@ import About from "./About";
 import HomeLayout from "./HomeLayout";
 import Api from "./Api/Posts";
 import EditPost from "./EditPost";
-import useWindowSize from "./hooks/useWindowSize";
 import useAxiosFetch from "./hooks/useAxiosFetch";
+import useWindowSize from "./hooks/useWindowSize";
 
 const App = () => {
   const navigate = useNavigate();
