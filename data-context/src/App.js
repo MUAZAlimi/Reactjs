@@ -11,7 +11,6 @@ import Api from "./Api/Posts";
 import EditPost from "./EditPost";
 import useWindowSize from "./hooks/useWindowSize";
 import useAxiosFetch from "./hooks/useAxiosFetch";
-import Footer from "./Footer";
 
 const App = () => {
   const navigate = useNavigate();
