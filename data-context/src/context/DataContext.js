@@ -1,10 +1,9 @@
 import { createContext, useEffect, useState } from 'react'
-import useWindowSize from "./hooks/useWindowSize";
-import useAxiosFetch from "./hooks/useAxiosFetch";
 import { Routes, Route, useNavigate } from "react-router-dom";
 import { format } from "date-fns";
-import { useState, useEffect } from "react";
-import Api from "./Api/Posts";
+import useWindowSize from "../hooks/useWindowSize";
+import useAxiosFetch from "../hooks/useAxiosFetch";
+import Api from "../Api/Posts";
 
 const DataContext = createContext({}) 
 
