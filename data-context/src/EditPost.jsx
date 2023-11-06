@@ -18,7 +18,7 @@ const EditPost = () => {
         const date = format(new Date(), "MMMM dd, yyyy pp");
         const updatedPost = { id, title: editTitle, date, body: editBody };
         try {
-          const response = await Api.put(`/edit/${id}`, updatedPost);
+          const response = await Api.put(`/posts/${id}`, updatedPost);
           setPosts(
             posts.map( post => (post.id === id ? { ...response.data } : post))
           );
