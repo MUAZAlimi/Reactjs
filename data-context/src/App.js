@@ -99,13 +99,7 @@ const App = () => {
           <Route
             index
             element={
-              <NewPost
-                postTitle={postTitle}
-                setPostTitle={setPostTitle}
-                postBody={postBody}
-                setPostBody={setPostBody}
-                handleSumit={handleSubmit}
-              />
+              <NewPost/>
             }
           />
           <Route

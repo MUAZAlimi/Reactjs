@@ -1,7 +1,8 @@
 import React, { useEffect } from 'react'
 import { Link, useParams } from 'react-router-dom'
 
-const EditPost = ({ posts, handleEdit, editBody, editTitle, setEditBody, setEditTitle }) => {
+const EditPost = () => {
+    const
     const { id } = useParams();
     const post = posts.find(post => (post.id).toString() === id)
 
