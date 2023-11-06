@@ -4,7 +4,7 @@ const Footer = () => {
   const date = new Date()
   return (
     <footer className='Footer'>
-      <p>CopyWright &copy;{date.getDay()/date.getMonth()/date.getFullYear()}</p>
+      <p>CopyWright &copy;{date.getMonth()}/{date.getDay()}/{date.getFullYear()}</p>
     </footer>
   )
 }
