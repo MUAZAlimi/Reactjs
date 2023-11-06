@@ -16,17 +16,6 @@ import { DataProvider } from "./context/DataContext";
 const App = () => {
   const navigate = useNavigate();
 
-  const handleDelete = async (id) => {
-    try {
-      await Api.delete(`/posts/${id}`);
-      const postLists = posts.filter((post) => post.id !== id);
-      setPosts(postLists);
-      navigate("/");
-    } catch (err) {
-      console.log(`Error: ${err.message}`);
-    }
-  };
-
   const [posts, setPosts] = useState([]);
   const [search, setSearch] = useState("");
   const [searchResult, setSearchResult] = useState([]);
@@ -39,7 +28,6 @@ const App = () => {
   useEffect(() => {
     setPosts(data)
   }, [data])
-
   
 
   useEffect(() => {
@@ -51,7 +39,17 @@ const App = () => {
 
     setSearchResult(filterResult.reverse());
   }, [posts, search]);
-  
+  const handleDelete = async (id) => {
+    try {
+      await Api.delete(`/posts/${id}`);
+      const postLists = posts.filter((post) => post.id !== id);
+      setPosts(postLists);
+      navigate("/");
+    } catch (err) {
+      console.log(`Error: ${err.message}`);
+    }
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     const id = posts.length ? posts[posts.length - 1].id + 1 : 1;
@@ -68,23 +66,7 @@ const App = () => {
       console.log(`Error: ${err.message}`);
     }
   };
-  // useEffect(() => {
-  //   const fetchPost = async () => {
-  //     try {
-  //       const response = await Api.get("/posts");
-  //       setPosts(response.data);
-  //     } catch (err) {
-  //       if (err.message) {
-  //         console.log(err.response.data);
-  //         console.log(err.response.status);
-  //         console.log(err.response.headers);
-  //       } else {
-  //         console.log(`Error: ${err.message}`);
-  //       }
-  //     }
-  //   };
-  //   fetchPost();
-  // }, []);
+  
 
   const handleEdit = async (id) => {
     const date = format(new Date(), "MMMM dd, yyyy pp");
