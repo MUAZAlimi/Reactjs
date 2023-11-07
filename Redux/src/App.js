@@ -12,9 +12,10 @@ import { useStoreActions } from "easy-peasy";
 
 const App = () => {
   const { data, fetchError, isLoading} = useAxiosFetch('http://localhost:3500/posts')
-  useEffect(() => {
 
-    const setPosts = useStoreActions((actions) => actions.setPosts)
+  const setPosts = useStoreActions((actions) => actions.setPosts)
+  
+  useEffect(() => {
     setPosts(data)
   }, [data, setPosts])
 
