@@ -1,4 +1,4 @@
-import Post from "./pages/Post";
+import Post from "../pages/Post";
 
 const Feed = ({ posts }) => {
   return (
