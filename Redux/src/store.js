@@ -1,5 +1,6 @@
 import { createStore, action, thunk, computed } from "easy-peasy"; 
 import Api from "./Api/Posts";
+import Posts from "./Api/Posts";
 
 export default createStore({
     posts: [],
@@ -32,6 +33,6 @@ export default createStore({
     }),
     setPostCount: computed((state) => state.posts.length),
     setPostId: computed((id) => {
-        return posts.find((post) => post.id.toString() === id);
+        return Posts.find((post) => post.id.toString() === id);
     })
 })
