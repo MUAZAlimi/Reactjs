@@ -2,7 +2,7 @@ import { useContext } from "react";
 import  Feed  from "./Feed";
 import DataContext from "./context/DataContext"
 
-const Home = () => {
+const Home = ({fetchError, isLoading}) => {
 
   const {searchResult, fetchError, isLoading} = useContext(DataContext)
   return (
