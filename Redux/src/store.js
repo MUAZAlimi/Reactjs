@@ -3,7 +3,7 @@ import Api from "./Api/Posts";
 
 export default createStore({
     posts: [],
-    setPosts: action((state) => {
+    setPosts: action((state, payLoad) => {
         state.posts = payLoad
     })
 })
