@@ -5,8 +5,8 @@ import {  useStoreActions, useStoreState } from "easy-peasy";
 const Nav = () => {
   const posts = useStoreState((state) => state.posts);
   const search = useStoreState((state) => state.search);
-  const setSearch = useStoreActions((actions) => actions.setSearch)
-  const setSearchResults = useStoreActions((actions) => actions.setSearchResults)
+  const setSearch = useStoreActions((actions) => actions.setSearch);
+  const setSearchResults = useStoreActions((actions) => actions.setSearchResults);
   return (
     <nav className="Nav">
       <form className="searchForm" onSubmit={(e) => e.preventDefault()}>
