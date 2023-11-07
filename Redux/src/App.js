@@ -6,8 +6,18 @@ import PostPage from "./PostPage";
 import About from "./About";
 import HomeLayout from "./HomeLayout";
 import EditPost from "./EditPost";
+import useAxiosFetch from "./hooks/useAxiosFetch";
+import { useEffect } from "react";
+import { useStoreActions } from "easy-peasy";
 
 const App = () => {
+  const { data, fetchError, isLoading} = useAxiosFetch('http://localhost:3500/posts')
+  useEffect(() => {
+
+    const setPosts = useStoreActions((actions) => actions.setPosts)
+    setPosts(data)
+  }, [data, setPosts])
+
   return (
     <Routes>
       <Route path="" element={<HomeLayout />}>
