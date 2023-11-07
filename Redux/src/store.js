@@ -34,5 +34,6 @@ export default createStore({
     setPostCount: computed((state) => state.posts.length),
     setPostId: computed((id) => {
         return Posts.find((post) => post.id.toString() === id);
-    })
+    }),
+    
 })
