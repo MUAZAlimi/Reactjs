@@ -6,8 +6,8 @@ const PostPage = () => {
   const { id } = useParams();
 
   const deletePost = useStoreActions((actions) => actions.deletePost);
-  const getPostById = useStoreState((actions) => actions.getPostById);
-  const post = getPostById(id);
+  const setPostById = useStoreState((actions) => actions.setPostById);
+  const post = setPostById(id);
   const handleDelete = async (id) => {
     deletePost(id);
     navigate("/");
