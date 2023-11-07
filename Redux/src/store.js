@@ -30,5 +30,5 @@ export default createStore({
     setSearchResults: action((state, payload) => {
         state.searchResults = payload;
     }),
-    setPostCount: computed((state) => {})
+    setPostCount: computed((state) => state.posts.length)
 })
