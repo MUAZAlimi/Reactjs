@@ -11,7 +11,7 @@ const EditPost = () => {
 
   const setEditBody = useStoreActions((actions) => actions.setEditBody);
   const setEditTitle = useStoreActions((actions) => actions.setEditTitle);
-  const  editPost = useStoreActions((actions) => actions.editPost);
+  const editPost = useStoreActions((actions) => actions.editPost);
 
   const setPostById = useStoreActions((actions) => actions.setPostById);
   const post = setPostById(id);
