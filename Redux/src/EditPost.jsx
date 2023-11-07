@@ -1,16 +1,27 @@
 import React, { useEffect, useContext } from 'react'
 import { Link, Navigate, useParams } from 'react-router-dom'
 import { format } from 'date-fns';
+import { useStoreActions, useStoreState } from 'easy-peasy';
 
 const EditPost = () => {
     const navigate = Navigate()
     const { id } = useParams();
+    const editTitle = useStoreState((state) => state.editTitle)
+    const editBody = useStoreState((state) => state.editBody)
+
+    const  setEditBody = useStoreActions((actions) => actions.setEditBody)
+    const  setEditTitle = useStoreActions((actions) => actions.setEditTitle)
+    const  editPost = useStoreActions((actions) => actions.editPost)
+
+    const getPostById = useStoreActions((actions) => actions.getPostById)
+    const post = getPostById(id)
 
     const handleEdit = async (id) => {
         const date = format(new Date(), "MMMM dd, yyyy pp");
         const updatedPost = { id, title: editTitle, date, body: editBody };
-       
-          navigate("/");
+        
+        editPost(updatedPost)
+        navigate("/");
       };
 
     useEffect(() => {
