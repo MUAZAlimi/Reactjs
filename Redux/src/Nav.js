@@ -1,7 +1,9 @@
 import { NavLink } from "react-router-dom";
-
+import { useEffect } from "react";
+import { useStoreActions, useStoreState } from "easy-peasy";
 
 const Nav = () => {
+  const posts = useStoreState((state) => state.posts)
   return (
     <nav className="Nav">
       <form className="searchForm" onSubmit={(e) => e.preventDefault()}>
@@ -25,6 +27,9 @@ const Nav = () => {
         <li>
           <NavLink to="/about">About</NavLink>
         </li>
+        {/* <li>
+          <NavLink to="/missing">m</NavLink>
+        </li> */}
       </ul>
     </nav>
   );
