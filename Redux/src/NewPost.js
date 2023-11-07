@@ -18,8 +18,8 @@ const NewPost = () => {
     const id = posts.length ? posts[posts.length - 1].id + 1 : 1; 
     const date = format(new Date(), "MMMM dd, yyyy pp");
     const newPost = { id, title: postTitle, date, body: postBody };
-    savePost(newPost)
     
+    savePost(newPost)
       navigate("/");
   };
 
